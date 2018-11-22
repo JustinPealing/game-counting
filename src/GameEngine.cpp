@@ -35,17 +35,27 @@ void GameEngine::Update(sf::Time dt)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num7)) Input(7);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8)) Input(8);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num9)) Input(9);
+
+    sf::Time now = m_clock.getElapsedTime();
+    if (m_answercorrect && (now - m_answertime).asSeconds() > 1) {
+        Reset();
+    }
 }
 
 void GameEngine::Input(int number)
 {
+    if (m_answercorrect) return;
     m_answer = number;
     m_answercorrect = m_answer == m_items.size();
+    m_answertime = m_clock.getElapsedTime();
 }
 
 void GameEngine::Reset()
 {
+    m_answer = 0;
+    m_answercorrect = false;
     m_items.clear();
+
     int random = rand() % 9 + 1;
     for (int i = 0; i < random; i++) {
         m_items.push_back(sf::Vector2f(50 + (i % 3) * 250, 50 + (i / 3) * 300));

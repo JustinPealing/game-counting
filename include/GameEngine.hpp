@@ -9,6 +9,8 @@ class GameEngine
     sf::Texture m_tx_unicorn;
     sf::Font m_font;
     sf::RenderStates m_rs;
+    sf::Text m_text;
+    sf::Clock m_clock;
 
     std::list<sf::Vector2f> m_items
     {
@@ -19,8 +21,7 @@ class GameEngine
 
     int m_answer = -1;
     bool m_answercorrect = false;
-
-    sf::Text m_text;
+    sf::Time m_answertime;
 
 public:
     GameEngine(sf::RenderWindow & window) : m_window(window)
