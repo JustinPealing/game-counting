@@ -20,12 +20,16 @@ void GameEngine::Load()
     m_text.setPosition(sf::Vector2f(1000, 250));
     m_text.setFillColor(sf::Color::Black);
 
+    m_fps.SetFont(m_font);
+
     srand (time(NULL));
     Reset();
 }
 
 void GameEngine::Update(sf::Time dt)
 {
+    m_fps.Update(dt);
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) Input(0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) Input(1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) Input(2);
@@ -88,5 +92,6 @@ void GameEngine::Draw()
         m_window.draw(m_text);
     }
 
+    m_fps.Draw(m_window);
     m_window.display();
 }

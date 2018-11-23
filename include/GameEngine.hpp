@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <list>
+#include "FpsCounter.hpp"
 
 class GameEngine 
 {
@@ -11,6 +12,7 @@ class GameEngine
     sf::RenderStates m_rs;
     sf::Text m_text;
     sf::Clock m_clock;
+    FpsCounter m_fps;
 
     std::list<sf::Vector2f> m_items;
 
@@ -19,7 +21,8 @@ class GameEngine
     sf::Time m_answertime;
 
 public:
-    GameEngine(sf::RenderWindow & window) : m_window(window)
+    GameEngine(sf::RenderWindow & window)
+        : m_window(window), m_fps()
     {
         m_rs.transform.scale(1, 1);
     }
