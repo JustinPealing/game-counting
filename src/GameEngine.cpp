@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <math.h>
 
 const float gravity = 1000;
 const float jump_power = 300;
@@ -58,7 +59,7 @@ void GameEngine::Reset()
 
     int random = rand() % 9 + 1;
     for (int i = 0; i < random; i++) {
-        m_items.push_back(sf::Vector2f(50 + (i % 3) * 250, 50 + (i / 3) * 300));
+        m_items.push_back(sf::Vector2f(150 + (i % 3) * 250, 150 + (i / 3) * 300));
     }
 }
 
@@ -68,6 +69,10 @@ void GameEngine::Draw()
 
     sf::Sprite sprite;
     sprite.setTexture(m_tx_unicorn);
+    sprite.setOrigin(95, 115);
+
+    float rotation = sin(m_clock.getElapsedTime().asSeconds() * 2) * 4;
+    sprite.setRotation(rotation);
 
     for (std::list<sf::Vector2f>::iterator it = m_items.begin(); it != m_items.end(); it++) {
         sprite.setPosition(*it);

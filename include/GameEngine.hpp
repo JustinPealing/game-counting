@@ -12,12 +12,7 @@ class GameEngine
     sf::Text m_text;
     sf::Clock m_clock;
 
-    std::list<sf::Vector2f> m_items
-    {
-        sf::Vector2f(100, 400),
-        sf::Vector2f(200, 200),
-        sf::Vector2f(300, 400)
-    };
+    std::list<sf::Vector2f> m_items;
 
     int m_answer = -1;
     bool m_answercorrect = false;
