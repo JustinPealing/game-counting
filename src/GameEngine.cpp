@@ -14,6 +14,10 @@ void GameEngine::Load()
         throw "Error loading images";
     if (!m_font.loadFromFile("data/ARCADE.TTF"))
         throw "Error loading font";
+    if (!m_welldone.loadFromFile("data/well_done.wav"))
+        throw "Error loading well_done.wav";
+    if (!m_tryagain.loadFromFile("data/try_again.wav"))
+        throw "Error loading try_again.wav";
 
     m_text.setFont(m_font);
     m_text.setCharacterSize(400);
@@ -53,6 +57,12 @@ void GameEngine::Input(int number)
     m_answer = number;
     m_answercorrect = m_answer == m_items.size();
     m_answertime = m_clock.getElapsedTime();
+
+    if (m_answercorrect)
+        m_sound.setBuffer(m_welldone);
+    else
+        m_sound.setBuffer(m_tryagain);
+    m_sound.play();
 }
 
 void GameEngine::Reset()
