@@ -7,7 +7,7 @@ const float window_height = 960;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Counting Game");
+    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Counting Game",  sf::Style::Fullscreen);
     sf::Clock clock;
     window.setFramerateLimit(30);
 
