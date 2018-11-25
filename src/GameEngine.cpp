@@ -10,7 +10,7 @@ const float scroll_speed = 100;
 
 void GameEngine::Load()
 {
-    if (!m_tx_unicorn.loadFromFile("data/unicorn.png"))
+    if (!m_tx_unicorn.loadFromFile("data/parrot.png"))
         throw "Error loading images";
     if (!m_font.loadFromFile("data/ARCADE.TTF"))
         throw "Error loading font";

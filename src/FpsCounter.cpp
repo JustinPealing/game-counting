@@ -8,7 +8,6 @@ void FpsCounter::Update(sf::Time dt)
 
 void FpsCounter::SetFont(sf::Font &font)
 {
-    m_text.setPosition(100, 100);
     m_text.setFont(font);
 }
 
